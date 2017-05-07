@@ -30,12 +30,12 @@ colnames(x_train) <- colnames(x_test) <- make.unique(names)
 
 train <- x_train %>% cbind(subject_train, y_train) %>% 
     merge(activity_labels, by.x = "y_train", by.y = "y") %>%
-    select(subject = subject_train, activity, contains("mean"), contains("std")) %>%
+    select(subject = subject_train, activity, contains("mean()"), contains("std()")) %>%
     mutate(dataset = "train")
     
 test <- x_test %>% cbind(subject_test, y_test) %>% 
     merge(activity_labels, by.x = "y_test", by.y = "y") %>%
-    select(subject = subject_test, activity, contains("mean"), contains("std")) %>%
+    select(subject = subject_test, activity, contains("mean()"), contains("std()")) %>%
     mutate(dataset = "test")
 ##create final data with both training and test data
 dataset <- rbind(train, test)
