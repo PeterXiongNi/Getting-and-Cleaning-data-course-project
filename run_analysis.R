@@ -43,7 +43,7 @@ dataset <- rbind(train, test)
 ##getting clean dataset of mean of each variables by subject and activities
 tidy_data <- dataset %>% group_by(subject, activity) %>% 
     summarise_each(funs(mean), -dataset) %>%
-    melt(id.vars = c("subject","activity"), measure.vars = 3:88, value.name = "mean_value")
+    melt(id.vars = c("subject","activity"), measure.vars = 3:68, value.name = "mean_value")
 
 ##write tidy_data into file
 write.table(tidy_data, file = "./data/tidy_data.txt", row.names = FALSE)
